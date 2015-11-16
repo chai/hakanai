@@ -22,7 +22,9 @@ namespace hakanai.Controllers
 
         public ViewResult List()
         {
-            throw new NotImplementedException();
+
+            var temp = _photographService.GetAllPhotographs();
+            return new ViewResult();
         }
     }
 }

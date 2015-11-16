@@ -12,7 +12,7 @@ namespace hakanai.Tests
     public class Dal
     {
 
-        Guid uploadID; 
+        [Ignore]
         [TestMethod]
         public void CreateANewPhotograph()        
         {
@@ -45,13 +45,14 @@ namespace hakanai.Tests
             Assert.IsTrue(photographService.UploadPhotography(newPhoto));
 
 
-            uploadID = newPhoto.PhotographId;
+            Guid uploadID = newPhoto.PhotographId;
             Assert.IsTrue(photographService.RemovePhotography(newPhoto));
 
         }
 
 
-
+        [Ignore]
+        
         [TestMethod]
         public void DeletePhotograph()
         {
@@ -77,7 +78,7 @@ namespace hakanai.Tests
 
 
 
-            Assert.IsTrue(photographService.RemovePhotography((new Photograph { PhotographId = uploadID })));
+            Assert.IsTrue(photographService.RemovePhotography((new Photograph { PhotographId = Guid.Empty })));
 
 
 
