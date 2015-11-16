@@ -30,7 +30,7 @@ namespace hakanai.dal
                          {
                              cs.MapLeftKey("ProjectRefId");
                              cs.MapRightKey("PhotographRefId");                             
-                             cs.ToTable("ProjectPhotograh");
+                             cs.ToTable("ProjectPhotograph");
 
                          });
 
