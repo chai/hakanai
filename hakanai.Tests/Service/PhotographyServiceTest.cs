@@ -17,6 +17,8 @@ namespace hakanai.Tests
         private IDbContextScope _dbContext = null;
         private PhotographServices _photographService = null;
 
+
+        #region InitialisationAndTearDown
         [TestInitialize]
         public void Setup()
         {
@@ -34,6 +36,9 @@ namespace hakanai.Tests
         {
 
         }
+
+        #endregion
+
 
         #region Upload
 
@@ -245,19 +250,23 @@ namespace hakanai.Tests
 
             //Arrange            
             Photograph newPhoto = new Photograph();
-            
-            newPhoto.PhotographId
-            _photographRepository.Add(newPhoto).Returns(true);
+            newPhoto.PhotographId = Guid.NewGuid();
+            newPhoto.Title = "Test Title";
+            newPhoto.Location = "location of photo";
+            _photographRepository.Get(newPhoto.PhotographId).Returns(newPhoto);
+
+
             //Act
 
 
-            bool result = _photographService.UploadPhotography(newPhoto);
+            Photograph existingPhoto = _photographService.GetPhotograph(newPhoto.PhotographId);
 
             //Assert
+            Assert.AreEqual(newPhoto.PhotographId, existingPhoto.PhotographId);
+            Assert.AreEqual(newPhoto.Title, existingPhoto.Title);
+            Assert.AreEqual(newPhoto.Location, existingPhoto.Location);
 
-            Assert.IsTrue(result);
         }
-
 
         #endregion
 

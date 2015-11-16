@@ -1,10 +1,11 @@
 ﻿using hakanai.domain.models;
 using Mehdime.Entity;
 using System;
+using System.Data.Entity;
 
 namespace hakanai.dal.Repositories
 {
-    public class ProjectRepository : IProject
+    public class ProjectRepository : IProjectRepository
     {
 
         private readonly IAmbientDbContextLocator _ambientDbContextLocator;
@@ -36,7 +37,23 @@ namespace hakanai.dal.Repositories
 
         public bool Remove(Project project)
         {
-            return false;
+            bool currentValidation = DbContext.Configuration.ValidateOnSaveEnabled;
+            try
+            {
+                DbContext.Configuration.ValidateOnSaveEnabled = false;
+                DbContext.Projects.Attach(project);
+                DbContext.Entry(project).State = EntityState.Deleted;
+                return true;
+            }
+            catch
+            {
+
+                return false;
+            }
+            finally
+            {
+                DbContext.Configuration.ValidateOnSaveEnabled = currentValidation;
+            }
         }
     }
 }

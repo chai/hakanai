@@ -3,7 +3,7 @@ using System;
 
 namespace hakanai.dal.Repositories
 {
-    public interface IProject
+    public interface IProjectRepository
     {
         Project Get(Guid projectId);
         bool Add(Project project);

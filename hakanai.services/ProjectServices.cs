@@ -8,10 +8,10 @@ namespace hakanai.services
     public class ProjectServices
     {
         private readonly IDbContextScopeFactory _dbContextScopeFactory;
-        private readonly IProject _projectRepository;
+        private readonly IProjectRepository _projectRepository;
 
         
-            public ProjectServices(IDbContextScopeFactory dbContextScopeFactory, ProjectRepository projectRepository)
+            public ProjectServices(IDbContextScopeFactory dbContextScopeFactory, IProjectRepository projectRepository)
         {
             if (dbContextScopeFactory == null) throw new ArgumentNullException("dbContextScopeFactory");
             if (projectRepository == null) throw new ArgumentNullException("projectRepository");
@@ -40,18 +40,21 @@ namespace hakanai.services
         }
 
 
-        public bool RemovePhotography(Project project)
+        public bool RemoveProject(Project project)
         {
 
             using (var dbContextScope = _dbContextScopeFactory.Create())
             {
 
                 //-- Persist
-              //  _projectRepository.Remove(photograph);
+                _projectRepository.Remove(project);
                 return dbContextScope.SaveChanges() != 0 ? true : false;
             }
         }
 
-
+        public Project GetProject(Guid projectId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

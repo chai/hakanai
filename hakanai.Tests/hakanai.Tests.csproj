@@ -101,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\PhotographControllerTest.cs" />
+    <Compile Include="Service\ProjectServiceTest.cs" />
     <Compile Include="Service\PhotographyServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
