@@ -2,6 +2,7 @@
 using hakanai.dal.Repositories;
 using hakanai.domain.models;
 using System;
+using System.Collections.Generic;
 
 namespace hakanai.services
 {
@@ -88,6 +89,16 @@ namespace hakanai.services
 
         }
 
+
+        public List<Photograph> GetAllPhotographs()
+        {
+            var dbContextScope = _dbContextScopeFactory.Create();
+
+            
+            //-- Persist
+            return _photographRepository.GetAll(); ;
+
+        }
 
     }
 }

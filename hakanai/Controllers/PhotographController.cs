@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using hakanai.services;
 namespace hakanai.Controllers
 {
@@ -19,7 +20,9 @@ namespace hakanai.Controllers
             return new ViewResult();
         }
 
-
-
+        public ViewResult List()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

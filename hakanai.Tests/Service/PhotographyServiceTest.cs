@@ -5,6 +5,7 @@ using Mehdime.Entity;
 using hakanai.services;
 using NSubstitute;
 using System;
+using System.Collections.Generic;
 
 namespace hakanai.Tests
 {
@@ -267,6 +268,47 @@ namespace hakanai.Tests
             Assert.AreEqual(newPhoto.Location, existingPhoto.Location);
 
         }
+
+
+
+
+        [TestMethod]
+        public void GetAllPhotograph()
+        {
+
+            //Arrange            
+            Photograph newPhoto = new Photograph();
+            newPhoto.PhotographId = Guid.NewGuid();
+            newPhoto.Title = "Test Title";
+            newPhoto.Location = "location of photo";
+
+            Photograph newPhoto2 = new Photograph();
+            newPhoto2.PhotographId = Guid.NewGuid();
+            newPhoto2.Title = "Test Title";
+            newPhoto2.Location = "location of photo";
+
+            List<Photograph> photoList = new List<Photograph>();
+
+
+            _photographRepository.GetAll().Returns(photoList);
+
+
+            //Act
+
+
+            List<Photograph> existingPhoto = _photographService.GetAllPhotographs();
+
+            for (int i = 0;i<existingPhoto.Count;i++)
+            {
+                Assert.AreEqual(photoList[i].PhotographId, existingPhoto[i].PhotographId);
+                Assert.AreEqual(photoList[i].Title, existingPhoto[i].Title);
+                Assert.AreEqual(photoList[i].Location, existingPhoto[i].Location);
+
+            }
+
+            //Assert
+        }
+
 
         #endregion
 

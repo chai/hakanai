@@ -133,6 +133,42 @@ namespace hakanai.Tests
         }
 
 
+
+
+        [TestMethod]
+        public void GetAllPhotograph()
+        {
+
+
+            var dbContextScopeFactory = new DbContextScopeFactory();
+            var ambientDbContextLocator = new AmbientDbContextLocator();
+            var photographRepository = new PhotographRepository(ambientDbContextLocator);
+
+
+
+
+            var photographService = new PhotographServices(dbContextScopeFactory, photographRepository);
+
+
+            var photo = photographService.GetAllPhotographs();
+            //foreach (var photograph in photo)
+            //{
+            //    var tempt = photograph.Title;
+
+            //    foreach(var tempphot in photograph.Projects)
+            //    {
+            //        var t = tempphot.Title;
+                    
+            //    }
+
+            //}
+            Assert.IsNotNull(photo);
+            
+
+        }
+
+
+
         [TestMethod]
         public void CreateNewProjectWithPhotograph()
         {

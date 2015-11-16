@@ -2,6 +2,8 @@
 using System;
 using Mehdime.Entity;
 using System.Data.Entity;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace hakanai.dal.Repositories
 {
@@ -31,6 +33,51 @@ namespace hakanai.dal.Repositories
             return DbContext.Photographs.Find(photographId);
             
         }
+
+        public List <Photograph> GetAll()
+        {
+
+            //List<Photograph> listOfAllPhotograph = await DbContext.Photographs.ToListAsync();
+
+            //var temp2= DbContext.Set<Photograph>().Select(s => new { PhotographId = s.PhotographId, Location = s.Location, Projects = s.Projects, Title = s.Title }).ToList();
+
+            //List<Photograph> returnList = new List<Photograph>();
+
+            //foreach (var item in temp2)
+            //{
+            //    returnList.Add (
+
+            //        new Photograph
+            //        {
+            //            PhotographId = item.PhotographId,
+            //            Location = item.Location,
+            //            Projects = item.Projects,
+            //            Title = item.Title
+            //        }
+            //    );
+            //}
+
+
+
+            //var itemList = from photograph in DbContext.Photographs
+            //               where photograph.Location.Length > 0
+            //               select photograph;
+
+            //Projection on to Anonymous object, can't return it as it only existing in this method
+            // Projection onto Linq and use that to project on to a list
+            //http://stackoverflow.com/questions/5325797/the-entity-cannot-be-constructed-in-a-linq-to-entities-query
+
+
+            return DbContext.Set<Photograph>().Select(s => new { PhotographId = s.PhotographId, Location = s.Location, Projects = s.Projects, Title = s.Title })
+                .ToList()
+                .Select(s => new Photograph { PhotographId = s.PhotographId, Location = s.Location, Projects = s.Projects, Title = s.Title })
+                .ToList<Photograph>();
+
+                
+
+            
+        }
+
         public bool Add(Photograph photograph)
         {
 

@@ -1,5 +1,6 @@
 ﻿using hakanai.domain.models;
 using System;
+using System.Collections.Generic;
 
 namespace hakanai.services
 {
@@ -9,5 +10,6 @@ namespace hakanai.services
         bool UploadPhotography(Photograph photograph);
         bool RemovePhotography(Photograph photograph);
         Photograph GetPhotograph(Guid photographId);
+        List<Photograph> GetAllPhotographs();
     }
 }
