@@ -28,7 +28,7 @@ namespace hakanai.dal.Repositories
         public Project Get(Guid projectId)
         {
 
-            return null;
+            return DbContext.Projects.Find(projectId);
         }
         public bool Add(Project project)
         {
