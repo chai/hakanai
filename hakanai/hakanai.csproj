@@ -252,6 +252,16 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\hakanai.model\hakanai.domain.models.csproj">
+      <Project>{d7b6315d-f2ea-49ca-9e48-9a399c0cbf6e}</Project>
+      <Name>hakanai.domain.models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\hakanai.services\hakanai.services.csproj">
+      <Project>{ebb7f423-ecfd-45dc-81c0-e301e45f7525}</Project>
+      <Name>hakanai.services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -5,6 +5,7 @@ using Mehdime.Entity;
 using hakanai.services;
 using NSubstitute;
 using System;
+using System.Collections.Generic;
 
 namespace hakanai.Tests
 {
@@ -66,11 +67,13 @@ namespace hakanai.Tests
             newPhoto.Title = "Test Title2";
             newPhoto.Location = "location of photo2";
 
+            var photographs = new List<Photograph>();
 
-            creatProject.Photographs.Add(newPhoto);
-            creatProject.Photographs.Add(newPhoto2);
+            photographs.Add(newPhoto);
+            photographs.Add(newPhoto2);
 
-
+            creatProject.Photographs = photographs;
+            
 
             _projectRepository.Add(creatProject).Returns(true);
             //Act
@@ -103,7 +106,14 @@ namespace hakanai.Tests
             newPhoto.Title = "Test Title";
             newPhoto.Location = "location of photo";
 
-            creatProject.Photographs.Add(newPhoto);
+
+            var photographs = new List<Photograph>();
+
+            photographs.Add(newPhoto);
+            
+
+            creatProject.Photographs = photographs;
+
 
             _projectRepository.Add(creatProject).Returns(false);
             //Act
@@ -136,7 +146,15 @@ namespace hakanai.Tests
             newPhoto.Title = "Test Title";
             newPhoto.Location = "location of photo";
 
-            creatProject.Photographs.Add(newPhoto);
+
+            var photographs = new List<Photograph>();
+
+            photographs.Add(newPhoto);
+            
+
+            creatProject.Photographs = photographs;
+
+
 
             _projectRepository.Add(creatProject).Returns(true);
 
@@ -172,7 +190,15 @@ namespace hakanai.Tests
             newPhoto.Title = "Test Title";
             newPhoto.Location = "location of photo";
 
-            creatProject.Photographs.Add(newPhoto);
+
+
+            var photographs = new List<Photograph>();
+
+            photographs.Add(newPhoto);
+            
+
+            creatProject.Photographs = photographs;
+
 
 
             _projectRepository.Add(creatProject).Returns(true);
@@ -202,7 +228,14 @@ namespace hakanai.Tests
             newPhoto.Title = "Test Title";
             newPhoto.Location = "location of photo";
 
-            creatProject.Photographs.Add(newPhoto);
+
+            var photographs = new List<Photograph>();
+
+            photographs.Add(newPhoto);
+            
+
+            creatProject.Photographs = photographs;
+
 
 
 
@@ -234,7 +267,7 @@ namespace hakanai.Tests
 
 
 
-            _projectRepository.Add(creatProject).Returns(true);
+            _projectRepository.Add(creatProject).Returns(false);
             //Act
 
 

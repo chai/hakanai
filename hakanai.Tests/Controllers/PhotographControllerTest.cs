@@ -17,7 +17,7 @@ namespace hakanai.Tests.Controllers
         public void UploadFileGoesToResult()
         {
             // Arrange
-            PhotographController controller = new PhotographController();        
+            PhotographController controller = new PhotographController(null);        
             // Act
             ViewResult result = controller.Upload() as ViewResult;
                         
@@ -29,7 +29,7 @@ namespace hakanai.Tests.Controllers
         public void UploadedFileSavedToServer()
         {
             //Arrange
-            PhotographController controller = new PhotographController();
+            PhotographController controller = new PhotographController(null);
             
 
             //Act

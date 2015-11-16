@@ -5,13 +5,14 @@ using System;
 
 namespace hakanai.services
 {
-    public class PhotographServices
+    public class PhotographServices: IPhotographServices
+
     {
         private readonly IDbContextScopeFactory _dbContextScopeFactory;
         private readonly IPhotographRepository _photographRepository;
 
-        
-            public PhotographServices(IDbContextScopeFactory dbContextScopeFactory, IPhotographRepository photographRepository)
+
+        public PhotographServices(IDbContextScopeFactory dbContextScopeFactory, IPhotographRepository photographRepository)
         {
             if (dbContextScopeFactory == null) throw new ArgumentNullException("dbContextScopeFactory");
             if (photographRepository == null) throw new ArgumentNullException("photographRepository");

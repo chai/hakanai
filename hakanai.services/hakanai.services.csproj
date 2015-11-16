@@ -53,6 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IProjectServices.cs" />
+    <Compile Include="Interfaces\IPhotographServices.cs" />
     <Compile Include="ProjectServices.cs" />
     <Compile Include="PhotographServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

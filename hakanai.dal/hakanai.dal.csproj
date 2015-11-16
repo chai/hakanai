@@ -88,6 +88,14 @@
     <Compile Include="Migrations\201511130303170_addedProject.Designer.cs">
       <DependentUpon>201511130303170_addedProject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511160629309_AddedRequireTitleAsRequiredFieldForProject.cs" />
+    <Compile Include="Migrations\201511160629309_AddedRequireTitleAsRequiredFieldForProject.Designer.cs">
+      <DependentUpon>201511160629309_AddedRequireTitleAsRequiredFieldForProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511160631347_CorrectPhotographToProjectTableName.cs" />
+    <Compile Include="Migrations\201511160631347_CorrectPhotographToProjectTableName.Designer.cs">
+      <DependentUpon>201511160631347_CorrectPhotographToProjectTableName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\DatabaseDBContextFactory.cs" />
@@ -130,6 +138,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511130303170_addedProject.resx">
       <DependentUpon>201511130303170_addedProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511160629309_AddedRequireTitleAsRequiredFieldForProject.resx">
+      <DependentUpon>201511160629309_AddedRequireTitleAsRequiredFieldForProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511160631347_CorrectPhotographToProjectTableName.resx">
+      <DependentUpon>201511160631347_CorrectPhotographToProjectTableName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,7 +5,8 @@ using System;
 
 namespace hakanai.services
 {
-    public class ProjectServices
+    public class ProjectServices: IProjectServices
+
     {
         private readonly IDbContextScopeFactory _dbContextScopeFactory;
         private readonly IProjectRepository _projectRepository;
@@ -24,12 +25,19 @@ namespace hakanai.services
             if (project == null)
                 throw new ArgumentNullException("createProject");
 
-          //  userToCreate.Validate();
+            //  userToCreate.Validate();
 
             /*
 			 * Typical usage of DbContextScope for a read-write business transaction. 
 			 * It's as simple as it looks.
 			 */
+
+            if (string.IsNullOrWhiteSpace(project.Title))
+            {
+                return false;
+            }
+                
+
             using (var dbContextScope = _dbContextScopeFactory.Create())
             {
 
@@ -54,7 +62,10 @@ namespace hakanai.services
 
         public Project GetProject(Guid projectId)
         {
-            throw new NotImplementedException();
+            var dbContextScope = _dbContextScopeFactory.Create();
+
+            //-- Persist
+            return _projectRepository.Get(projectId);
         }
     }
 }
