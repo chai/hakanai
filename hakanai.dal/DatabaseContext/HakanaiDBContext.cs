@@ -37,7 +37,7 @@ namespace hakanai.dal
 
 
             modelBuilder.Entity<Project>().HasKey(p=>p.ProjectId).Property(p => p.ProjectId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            modelBuilder.Entity<Project>().Property(p => p.Title);
+            modelBuilder.Entity<Project>().Property(p => p.Title).IsRequired();
             modelBuilder.Entity<Project>().Property(p => p.Description);
 
 
