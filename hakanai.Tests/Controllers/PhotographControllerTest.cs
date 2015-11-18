@@ -13,6 +13,8 @@ using NSubstitute;
 
 using hakanai.services;
 using hakanai.domain.models;
+using AutoMapper;
+using hakanai.ViewModels;
 
 namespace hakanai.Tests.Controllers
 {
@@ -24,7 +26,19 @@ namespace hakanai.Tests.Controllers
         private IPhotographServices _photographServices=null;
         
         
+    [ClassInitialize]
+    public void SetupMapper()
+        {
 
+                        Mapper.CreateMap<Photograph, PhotoViewModel>()
+    .ForMember("Taken", dest => dest.Ignore())
+    .ForMember("File", dest => dest.Ignore())
+    .ForMember("UrlLocation", x => x.MapFrom(scr => scr.Location))
+    .ForMember(dest => dest.Projects, opt => opt.MapFrom(src => src.Projects.Select(p => p.ProjectId).ToList()));
+
+            Mapper.AssertConfigurationIsValid();
+        }
+        
 
         #region InitialisationAndTearDown
         [TestInitialize]
@@ -54,18 +68,43 @@ namespace hakanai.Tests.Controllers
 
             var photoListToReturn = new List<Photograph>();
 
+            var projectList = new List<Project>();
+            projectList.Add(
+                 new Project {
+                     ProjectId = Guid.NewGuid(),
+                     Title = "Project Title",
+                     Description = "Description tex"
+                 }
+                
+                );
+
+            projectList.Add(
+              new Project
+              {
+                  ProjectId = Guid.NewGuid(),
+                  Title = "Project Title 2",
+                  Description = "Description tex2"
+              }
+
+             );
+
+
             Photograph photo1 = new Photograph
             {
                 PhotographId = Guid.NewGuid(),
                 Title = "Test title",
-                Location = "Test location"
+                Location = "Test location",
+                Projects = projectList
+
             };
             Photograph photo2 = new Photograph
             {
                 PhotographId = Guid.NewGuid(),
                 Title = "Test title 2",
-                Location = "Test location 2"
+                Location = "Test location 2",
+                Projects = projectList
             };
+
 
             photoListToReturn.Add(photo1);
             photoListToReturn.Add(photo2);
@@ -80,7 +119,7 @@ namespace hakanai.Tests.Controllers
 
 
 
-            var result = photoController.List() as ViewResult;
+            var result = photoController.ListOfPhotos() as ViewResult;
 
             var photographList = result.Model as List<Photograph>;
 

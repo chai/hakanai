@@ -10,5 +10,7 @@ namespace hakanai
         {
             ConfigureAuth(app);
         }
+
+
     }
 }

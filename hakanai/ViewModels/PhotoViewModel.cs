@@ -3,10 +3,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Web;
 
 using hakanai.DataValidation;
+using System.Collections.Generic;
 
 namespace hakanai.ViewModels
 {
-    class PhotoViewModel
+    public class PhotoViewModel
     {
         [Required]
         [Display(Name = "Title")]
@@ -15,7 +16,7 @@ namespace hakanai.ViewModels
         [Required]
         [DataType(DataType.DateTime)]
         [Display(Name = "Time")]
-        public DateTime taken { get; set; }
+        public DateTime Taken { get; set; }
 
 
         [Required]
@@ -24,5 +25,10 @@ namespace hakanai.ViewModels
         [FileAttribute(1024)]
         public HttpPostedFileBase File { get; set; }
 
+        [Required]
+        public Guid PhotographId { get; set; }
+
+        public List<Guid> Projects { get; set; }
+        
     }
 }

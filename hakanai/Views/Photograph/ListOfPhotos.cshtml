@@ -1,0 +1,51 @@
+﻿@model IEnumerable<hakanai.ViewModels.PhotoViewModel>
+
+@{
+    ViewBag.Title = "ListOfPhotos";
+}
+
+<h2>ListOfPhotos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Taken)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UrlLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhotographId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Taken)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UrlLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhotographId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
