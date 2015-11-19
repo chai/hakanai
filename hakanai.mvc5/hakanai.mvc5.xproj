@@ -6,18 +6,19 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>de3588ba-3141-45b5-bd23-dd28efa3a126</ProjectGuid>
+    <ProjectGuid>fc6f1eba-6c19-44be-ab19-540cd5e3e6cd</ProjectGuid>
     <RootNamespace>hakanai.mvc5</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">..\artifacts\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">..\artifacts\bin\$(MSBuildProjectName)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup>
     <SchemaVersion>2.0</SchemaVersion>
-    <DevelopmentServerPort>2169</DevelopmentServerPort>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <ProduceOutputsOnBuild>True</ProduceOutputsOnBuild>
-  </PropertyGroup>
+  <ItemGroup>
+    <DnxInvisibleContent Include="bower.json" />
+    <DnxInvisibleContent Include=".bowerrc" />
+    <DnxInvisibleContent Include="package.json" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\hakanai.model\hakanai.domain.models.csproj" />
     <ProjectReference Include="..\hakanai.services\hakanai.services.csproj" />

@@ -1,6 +1,11 @@
 using System;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
+using hakanai.services;
+using Mehdime.Entity;
+using hakanai.dal.Repositories;
+using System.Data.Entity;
+using hakanai.dal;
 
 namespace hakanai.App_Start
 {
@@ -37,6 +42,21 @@ namespace hakanai.App_Start
 
             // TODO: Register your types here
             // container.RegisterType<IProductRepository, ProductRepository>();
+
+            
+
+            
+            container.RegisterType<IAmbientDbContextLocator, AmbientDbContextLocator>();
+            container.RegisterType<IDbContextScope, DbContextScope>();
+            container.RegisterType<IDbContextScopeFactory, DbContextScopeFactory>();
+            //container.RegisterType<TDbContext, DbContext>();
+            container.RegisterType<IPhotographServices, PhotographServices>();
+
+//            container.RegisterType<, HakanaiDBContext>();
+            
+
+
+
         }
     }
 }

@@ -6,7 +6,7 @@ namespace hakanai.dal.Repositories
     public class DatabaseDBContextFactory
     {
         
-
+/*
         public static HakanaiDBContext Create(IAmbientDbContextLocator ambientDbContextLocator)
         {
             
@@ -20,5 +20,6 @@ namespace hakanai.dal.Repositories
             return dbContext;            
         }
 
+    */
     }
 }
