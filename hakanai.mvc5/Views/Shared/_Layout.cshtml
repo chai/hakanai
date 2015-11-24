@@ -26,12 +26,26 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-controller="Home" asp-action="Index" class="navbar-brand">hakanai.mvc5</a>
+                <a asp-controller="Home" asp-action="Index" class="navbar-brand">mvc5</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                    @*<li><a asp-controller="Home" asp-action="About">About</a></li>*@
+                    
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Projects<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-controller="Project" asp-action="Uchi">Uchi</a></li>
+                            <li><a href="#">Drafts</a></li>
+                            <li><a href="#">Sent Items</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Trash</a></li>
+                        </ul>
+                    </li>
+                                           
+                       
+
+                    <li><a asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
             </div>
